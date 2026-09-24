@@ -1,0 +1,21 @@
+# Android
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+captures/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Secrets
+.env
+*.jks
+*.keystore
+
+# OS
+.DS_Store
+Thumbs.db

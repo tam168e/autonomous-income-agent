@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Autonomous Income Agent</string>
+    <string name="background_service_description">Background opportunity discovery</string>
+</resources>

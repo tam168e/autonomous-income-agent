@@ -6,6 +6,7 @@ import com.masoud.autonomousincome.BuildConfig
 import com.masoud.autonomousincome.domain.EligibilityStatus
 import com.masoud.autonomousincome.domain.Opportunity
 import com.masoud.autonomousincome.domain.RiskLevel
+import com.masoud.autonomousincome.domain.WalletDestination
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
@@ -40,7 +41,7 @@ class RemoteOpportunityProvider(
         UnsupportedOperationException("Payment verification belongs to a concrete provider adapter")
     )
 
-    override suspend fun requestWithdrawal(amountUsd: Double): Result<String> = Result.failure(
+    override suspend fun requestWithdrawal(amountUsd: Double, wallet: WalletDestination): Result<String> = Result.failure(
         UnsupportedOperationException("Withdrawal belongs to a concrete provider adapter")
     )
 

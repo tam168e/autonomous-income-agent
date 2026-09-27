@@ -95,6 +95,9 @@ def load_config(repo_root: Path) -> dict[str, Any]:
     cfg["repo_path"] = str(Path(cfg["repo_path"]).resolve())
     cfg["bridge_repo_path"] = str(Path(cfg.get("bridge_repo_path", repo_root)).resolve())
     cfg["allowed_roots"] = [str(Path(p).resolve()) for p in cfg["allowed_roots"]]
+    bridge_root = str(Path(cfg["bridge_repo_path"]).resolve())
+    if bridge_root not in cfg["allowed_roots"]:
+        cfg["allowed_roots"].append(bridge_root)
     cfg["armed_file"] = str(Path(cfg["armed_file"]).resolve())
     cfg["branch"] = str(cfg.get("branch") or DEFAULT_BRANCH)
     cfg["poll_seconds"] = max(2, int(cfg.get("poll_seconds", 5)))

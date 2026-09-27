@@ -6,6 +6,16 @@ import com.masoud.autonomousincome.domain.WalletDestination
 
 enum class ExecutionMode { TASK, PERSISTENT }
 
+data class PersistentProviderStatus(
+    val providerId: String,
+    val healthy: Boolean,
+    val summary: String
+)
+
+interface PersistentIncomeProvider {
+    suspend fun getPersistentStatus(): Result<PersistentProviderStatus>
+}
+
 interface IncomeProvider {
     val id: String
     val name: String

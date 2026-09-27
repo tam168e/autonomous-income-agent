@@ -68,6 +68,8 @@ class MysteriumProviderTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(status["registrationStatus"], "Registered")
         self.assertEqual(status["onlinePercent"], 0.0)
         self.assertEqual(status["quality"], 0.0)
+        self.assertFalse(status["activityTelemetryAvailable"])
+        self.assertFalse(status["qualityTelemetryAvailable"])
 
     async def test_country_confirmation_is_required_before_eligibility(self):
         provider = MysteriumNodeProvider(confirmed_countries="")
@@ -121,6 +123,23 @@ class MysteriumProviderTests(unittest.IsolatedAsyncioTestCase):
             {
                 "address": "0x1111111111111111111111111111111111111111",
                 "network": "BSC",
+                "asset": "MYST",
+            },
+        )
+
+        self.assertFalse(result["success"])
+        provider._request.assert_not_awaited()
+
+    async def test_withdrawal_rejects_malformed_evm_address_before_network_calls(self):
+        provider = MysteriumNodeProvider()
+        provider.resolve_identity_id = AsyncMock(return_value="identity-1")
+        provider._request = AsyncMock()
+
+        result = await provider.request_withdrawal(
+            1.0,
+            {
+                "address": "0xnot-a-wallet",
+                "network": "POLYGON",
                 "asset": "MYST",
             },
         )

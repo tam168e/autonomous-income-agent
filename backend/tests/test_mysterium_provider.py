@@ -30,6 +30,11 @@ class FakeAsyncClient:
     async def __aexit__(self, exc_type, exc, tb):
         return False
 
+    async def request(self, method, url, headers=None, json=None):
+        if method.upper() != "GET":
+            return FakeResponse({}, status_code=405)
+        return await self.get(url, headers=headers)
+
     async def get(self, url, headers=None):
         path = url.split("4449", 1)[-1]
         responses = {

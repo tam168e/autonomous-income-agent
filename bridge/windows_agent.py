@@ -86,7 +86,7 @@ def load_config(repo_root: Path) -> dict[str, Any]:
     }
 
     if config_path.exists():
-        with config_path.open("r", encoding="utf-8") as f:
+        with config_path.open("r", encoding="utf-8-sig") as f:
             user_cfg = json.load(f)
         if not isinstance(user_cfg, dict):
             raise ValueError("config.json must contain a JSON object")

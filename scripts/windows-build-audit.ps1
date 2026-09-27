@@ -1,11 +1,11 @@
 # Autonomous Income Agent - Windows build and runtime audit
-$ErrorActionPreference="Continue"
+$ErrorActionPreference = "Continue"
 
-$Root="C:\ai\AutonomousIncomeAgent_GitHub"
-$Report=Join-Path $Root "windows-build-audit.txt"
-$Lines=@()
+$Root = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$Report = Join-Path $Root "windows-build-audit.txt"
+$Lines = @()
 
-function Add($s){ $Lines += $s; Write-Host $s }
+function Add($s) { $Lines += [string]$s; Write-Host $s }
 
 Add "=== AUTONOMOUS INCOME AGENT WINDOWS AUDIT ==="
 Add ("DATE=" + (Get-Date -Format o))
@@ -13,10 +13,10 @@ Add ("ROOT=" + $Root)
 Add ""
 
 Add "=== TOOLS ==="
-$java=Get-Command java.exe -ErrorAction SilentlyContinue
-$gradle=Get-Command gradle.exe -ErrorAction SilentlyContinue
-$adb=Get-Command adb.exe -ErrorAction SilentlyContinue
-$python=Get-Command python.exe -ErrorAction SilentlyContinue
+$java = Get-Command java.exe -ErrorAction SilentlyContinue
+$gradle = Get-Command gradle.exe -ErrorAction SilentlyContinue
+$adb = Get-Command adb.exe -ErrorAction SilentlyContinue
+$python = Get-Command python.exe -ErrorAction SilentlyContinue
 
 Add ("JAVA=" + [bool]$java + " PATH=" + $(if($java){$java.Source}else{"N/A"}))
 if($java){ & $java.Source -version 2>&1 | ForEach-Object { Add $_ } }
@@ -48,7 +48,7 @@ if(Test-Path (Join-Path $Root "settings.gradle.kts")){
 
 Add ""
 Add "=== ANDROID SDK ==="
-$SdkCandidates=@(
+$SdkCandidates = @(
     $env:ANDROID_HOME,
     $env:ANDROID_SDK_ROOT,
     "$env:LOCALAPPDATA\Android\Sdk"
@@ -62,14 +62,20 @@ if($SdkCandidates.Count -gt 0){
 
 Add ""
 Add "=== BUILD ATTEMPT ==="
-if($gradle -and (Test-Path (Join-Path $Root "settings.gradle.kts"))){
+if((Test-Path (Join-Path $Root "gradlew.bat")) -and (Test-Path (Join-Path $Root "settings.gradle.kts"))){
+    Push-Location $Root
+    try {
+        & .\gradlew.bat --no-daemon :app:assembleDebug 2>&1 | ForEach-Object { Add $_ }
+        Add ("GRADLEW_EXIT=" + $LASTEXITCODE)
+    } finally { Pop-Location }
+} elseif($gradle -and (Test-Path (Join-Path $Root "settings.gradle.kts"))){
     Push-Location $Root
     try {
         & $gradle.Source --no-daemon :app:assembleDebug 2>&1 | ForEach-Object { Add $_ }
         Add ("GRADLE_EXIT=" + $LASTEXITCODE)
     } finally { Pop-Location }
 } else {
-    Add "BUILD_SKIPPED_GRADLE_OR_PROJECT_MISSING"
+    Add "BUILD_SKIPPED_WRAPPER_OR_GRADLE_OR_PROJECT_MISSING"
 }
 
 Add ""

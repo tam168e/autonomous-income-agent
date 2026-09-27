@@ -1,6 +1,7 @@
 import asyncio
 import base64
 import os
+import re
 from datetime import datetime, timezone
 from typing import Any
 
@@ -27,6 +28,10 @@ def _number(*values: Any) -> float:
         except (TypeError, ValueError):
             continue
     return 0.0
+
+
+def _is_evm_address(value: str) -> bool:
+    return bool(re.fullmatch(r"0x[0-9a-fA-F]{40}", str(value or "")))
 
 
 def _token_human(value: Any) -> float:
@@ -185,6 +190,10 @@ class MysteriumNodeProvider:
                     if isinstance(snapshot["activity"], dict)
                     else 0
                 ),
+                "activityTelemetryAvailable": isinstance(snapshot["activity"], dict)
+                and snapshot["activity"].get("telemetryAvailable", True) is not False,
+                "qualityTelemetryAvailable": isinstance(snapshot["quality"], dict)
+                and snapshot["quality"].get("telemetryAvailable", True) is not False,
                 "supportedCountries": self.supported_countries,
                 "countryConfirmationRequired": not bool(self.supported_countries),
             }
@@ -358,7 +367,7 @@ class MysteriumNodeProvider:
         address = str(wallet.get("address", ""))
         if str(wallet.get("network", "")).upper() != "POLYGON" or str(wallet.get("asset", "")).upper() != "MYST":
             return {"success": False, "error": "Mysterium withdrawals require POLYGON / MYST."}
-        if not address.startswith("0x") or len(address) != 42:
+        if not _is_evm_address(address):
             return {"success": False, "error": "A valid EVM wallet address is required."}
 
         identity_id = await self.resolve_identity_id()

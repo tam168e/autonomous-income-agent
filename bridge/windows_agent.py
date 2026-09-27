@@ -312,7 +312,7 @@ def process_inbox(repo: Path, cfg: dict[str, Any]) -> bool:
         log(f"processing {path.name}")
         result: dict[str, Any] = {"ok": False, "id": path.stem, "bridge_version": BRIDGE_VERSION}
         try:
-            command = validate_command(json.loads(path.read_text(encoding="utf-8")))
+            command = validate_command(json.loads(path.read_text(encoding="utf-8-sig")))
             result["id"] = command["id"]
             result["operation"] = command.get("operation")
             result["result"] = dispatch(command, cfg)

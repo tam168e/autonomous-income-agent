@@ -1,0 +1,3 @@
+# Local bridge runtime state
+*.local.json
+ARMED

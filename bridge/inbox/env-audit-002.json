@@ -1,0 +1,11 @@
+{
+  "id": "env-audit-002",
+  "operation": "run",
+  "executable": "python",
+  "args": [
+    "-c",
+    "import os,platform,sys,subprocess,json; run=lambda a: subprocess.run(a,capture_output=True,text=True,shell=False); print(json.dumps({'python':sys.version.split()[0],'platform':platform.platform(),'user':os.environ.get('USERNAME'),'machine':platform.node(),'workspace_exists':os.path.isdir(r'C:\\\\ai\\\\AutonomousIncomeAgent_GitHub'),'ai_system_exists':os.path.isdir(r'C:\\\\AI_System'),'workspace_git':run(['git','-C',r'C:\\\\ai\\\\AutonomousIncomeAgent_GitHub','status','--short','--branch']).stdout,'bridge_git':run(['git','-C',r'C:\\\\AI_WindowsBridge','status','--short','--branch']).stdout},ensure_ascii=False,indent=2))"
+  ],
+  "cwd": "C:\\AI_WindowsBridge",
+  "timeout_seconds": 30
+}

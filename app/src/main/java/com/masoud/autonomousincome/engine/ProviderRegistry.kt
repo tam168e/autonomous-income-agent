@@ -7,4 +7,8 @@ class ProviderRegistry(private val providers: List<IncomeProvider> = emptyList()
     fun productionProviders(): List<IncomeProvider> = providers.filter {
         it.executionMode == ExecutionMode.TASK
     }
+
+    fun persistentProviders(): List<IncomeProvider> = providers.filter {
+        it.executionMode == ExecutionMode.PERSISTENT
+    }
 }

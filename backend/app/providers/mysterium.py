@@ -396,11 +396,12 @@ class MysteriumNodeProvider:
         if current_address and str(current_address).lower() != address.lower():
             return {"success": False, "error": "Configured payout address does not match the application wallet."}
 
-        await self._request(
-            "/identities/" + identity_id + "/payout-address",
-            method="PUT",
-            payload={"address": address},
-        )
+        if not current_address:
+            await self._request(
+                "/identities/" + identity_id + "/payout-address",
+                method="PUT",
+                payload={"address": address},
+            )
         details = await self._request("/identities/" + identity_id)
         hermes_id = details.get("hermesId") if isinstance(details, dict) else None
         if not hermes_id:

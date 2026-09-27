@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "id": "bootstrap-ping-001",
+  "bridge_version": "1.0.0",
+  "operation": "ping",
+  "result": {
+    "bridge_version": "1.0.0",
+    "status": "ok"
+  },
+  "timestamp": "2026-09-27T20:32:41"
+}

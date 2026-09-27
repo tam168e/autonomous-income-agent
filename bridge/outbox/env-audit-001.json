@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "id": "env-audit-001",
+  "bridge_version": "1.0.0",
+  "operation": "run",
+  "error": "PermissionError: path is outside allowed_roots: C:\\AI_WindowsBridge",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 315, in process_inbox\n    result[\"result\"] = dispatch(command, cfg)\n                       ~~~~~~~~^^^^^^^^^^^^^^\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 284, in dispatch\n    return op_run(command, cfg)\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 231, in op_run\n    cwd = safe_path(cwd_raw, [Path(x) for x in cfg[\"allowed_roots\"]])\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 60, in safe_path\n    raise PermissionError(f\"path is outside allowed_roots: {p}\")\nPermissionError: path is outside allowed_roots: C:\\AI_WindowsBridge\n",
+  "timestamp": "2026-09-27T20:40:07"
+}

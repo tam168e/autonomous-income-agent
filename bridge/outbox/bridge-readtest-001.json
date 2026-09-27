@@ -1,0 +1,8 @@
+{
+  "ok": false,
+  "id": "bridge-readtest-001",
+  "bridge_version": "1.0.0",
+  "error": "JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 315, in process_inbox\n    command = validate_command(json.loads(path.read_text(encoding=\"utf-8\")))\n                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\pc ho\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\json\\__init__.py\", line 341, in loads\n    raise JSONDecodeError(\"Unexpected UTF-8 BOM (decode using utf-8-sig)\",\n                          s, 0)\njson.decoder.JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)\n",
+  "timestamp": "2026-09-27T20:44:06"
+}

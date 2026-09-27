@@ -22,6 +22,7 @@ class IncomeScanWorker(appContext: Context, workerParams: WorkerParameters) : Co
         )
         return try {
             OpportunityEngine(repository, registry).scan()
+            com.masoud.autonomousincome.engine.ExecutionEngine(repository, registry).monitorPersistentProviders()
             Result.success()
         } catch (t: Throwable) {
             repository.log("ERROR", "Background scan failed: ${t.message}")

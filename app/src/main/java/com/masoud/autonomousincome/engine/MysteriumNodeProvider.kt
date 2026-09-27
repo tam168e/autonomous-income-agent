@@ -6,6 +6,7 @@ import com.masoud.autonomousincome.BuildConfig
 import com.masoud.autonomousincome.domain.EligibilityStatus
 import com.masoud.autonomousincome.domain.Opportunity
 import com.masoud.autonomousincome.domain.RiskLevel
+import com.masoud.autonomousincome.domain.WalletDestination
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -40,7 +41,7 @@ class MysteriumNodeProvider(
 
     override suspend fun discover(): List<Opportunity> {
         val request = Request.Builder()
-            .url("${baseUrl.trimEnd('/')}+/opportunities")
+            .url(baseUrl.trimEnd('/') + "/opportunities")
             .get()
             .build()
         return client.newCall(request).execute().use { response ->
@@ -57,14 +58,26 @@ class MysteriumNodeProvider(
         ))
 
     override suspend fun verifyPayment(paymentId: String): Result<Double> =
-        postForAmount("/providers/$+id/verify-payment", mapOf("paymentId" to paymentId))
+        postForAmount(
+            "/providers/$id/verify-payment",
+            mapOf("paymentId" to paymentId)
+        )
 
-    override suspend fun requestWithdrawal(amountUsd: Double): Result<String> =
-        postForReference("/providers/$+id/withdraw", mapOf("amountUsd" to amountUsd))
+    override suspend fun requestWithdrawal(
+        amountUsd: Double,
+        wallet: WalletDestination
+    ): Result<String> =
+        postForReference(
+            "/providers/$id/withdraw",
+            mapOf(
+                "amountUsd" to amountUsd,
+                "wallet" to wallet
+            )
+        )
 
     suspend fun getRuntimeStatus(): RuntimeStatus {
         val request = Request.Builder()
-            .url("${baseUrl.trimEnd('/')}+/providers/$+id/status")
+            .url(baseUrl.trimEnd('/') + "/providers/$id/status")
             .get()
             .build()
         return client.newCall(request).execute().use { response ->

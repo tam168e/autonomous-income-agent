@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "id": "fulltest-read-ai",
+  "bridge_version": "1.0.0",
+  "operation": "read_file",
+  "result": {
+    "path": "C:\\AI_System\\agent.py",
+    "bytes": 2207,
+    "content": "import time\nimport schedule\nimport traceback\nimport datetime\n\nfrom modules.system_monitor import save_report\nfrom modules.decision_logger import log_decision\nfrom modules.income_scan import create_report\nfrom modules.data_collector import collect_data\nfrom modules.decision_engine import create_decision_report\nfrom modules.opportunity_researcher import save_opportunities\n\n\n\ndef safe_run(task_name, function):\n\n    try:\n\n        function()\n\n        log_decision(\n            task_name,\n            \"Completed\",\n            \"Task executed successfully\"\n        )\n\n\n    except Exception as e:\n\n        log_decision(\n            task_name,\n            \"Failed\",\n            str(e)\n        )\n\n        print(task_name, \"failed\")\n\n        traceback.print_exc()\n\n\n\ndef run_system_check():\n\n    safe_run(\n        \"System Monitor\",\n        save_report\n    )\n\n\n\ndef run_income_scan():\n\n    safe_run(\n        \"Income Scanner\",\n        create_report\n    )\n\n\n\ndef run_data_collection():\n\n    safe_run(\n        \"Data Collector\",\n        collect_data\n    )\n\n\n\ndef run_opportunity_research():\n\n    safe_run(\n        \"Opportunity Researcher\",\n        save_opportunities\n    )\n\n\n\ndef run_decision_engine():\n\n    safe_run(\n        \"Decision Engine\",\n        create_decision_report\n    )\n\n\n\ndef startup():\n\n    print(\"==============================\")\n    print(\"AI System Agent Started\")\n    print(datetime.datetime.now())\n    print(\"==============================\")\n\n\n    run_system_check()\n    run_income_scan()\n    run_data_collection()\n    run_opportunity_research()\n    run_decision_engine()\n\n\n\ndef main():\n\n    startup()\n\n\n    schedule.every(30).minutes.do(\n        run_system_check\n    )\n\n\n    schedule.every(1).hour.do(\n        run_income_scan\n    )\n\n\n    schedule.every(15).minutes.do(\n        run_data_collection\n    )\n\n\n    schedule.every(2).hours.do(\n        run_opportunity_research\n    )\n\n\n    schedule.every(2).hours.do(\n        run_decision_engine\n    )\n\n\n    while True:\n\n        schedule.run_pending()\n\n        time.sleep(1)\n\n\n\nif __name__ == \"__main__\":\n\n    main()"
+  },
+  "timestamp": "2026-09-27T20:47:44"
+}

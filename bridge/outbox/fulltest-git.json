@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "id": "fulltest-git",
+  "bridge_version": "1.0.0",
+  "operation": "run",
+  "result": {
+    "returncode": 0,
+    "stdout": "git version 2.55.0.windows.5\n",
+    "stderr": "",
+    "executable": "C:\\Program Files\\Git\\cmd\\git.EXE",
+    "cwd": "C:\\AI_WindowsBridge"
+  },
+  "timestamp": "2026-09-27T20:47:44"
+}

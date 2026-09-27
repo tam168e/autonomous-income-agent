@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "id": "fulltest-python",
+  "bridge_version": "1.0.0",
+  "operation": "run",
+  "result": {
+    "returncode": 0,
+    "stdout": "Python 3.14.7\n",
+    "stderr": "",
+    "executable": "C:\\Users\\pc ho\\AppData\\Local\\Programs\\Python\\Python314\\python.EXE",
+    "cwd": "C:\\AI_WindowsBridge"
+  },
+  "timestamp": "2026-09-27T20:47:44"
+}

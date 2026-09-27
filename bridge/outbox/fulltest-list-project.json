@@ -1,0 +1,84 @@
+{
+  "ok": true,
+  "id": "fulltest-list-project",
+  "bridge_version": "1.0.0",
+  "operation": "list_dir",
+  "result": {
+    "path": "C:\\ai\\AutonomousIncomeAgent_GitHub",
+    "items": [
+      {
+        "name": "app",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\app",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "backend",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\backend",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "docs",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\docs",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "gradle",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\gradle",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "build.gradle.kts",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\build.gradle.kts",
+        "type": "file",
+        "bytes": 217
+      },
+      {
+        "name": "BUILD_WITH_ANDROID_STUDIO.md",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\BUILD_WITH_ANDROID_STUDIO.md",
+        "type": "file",
+        "bytes": 345
+      },
+      {
+        "name": "gradle.properties",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\gradle.properties",
+        "type": "file",
+        "bytes": 133
+      },
+      {
+        "name": "PROJECT_DUMP_FOR_CHAT.txt",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\PROJECT_DUMP_FOR_CHAT.txt",
+        "type": "file",
+        "bytes": 42275
+      },
+      {
+        "name": "PROJECT_SPEC.md",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\PROJECT_SPEC.md",
+        "type": "file",
+        "bytes": 379
+      },
+      {
+        "name": "README.md",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\README.md",
+        "type": "file",
+        "bytes": 2346
+      },
+      {
+        "name": "README_GITHUB.md",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\README_GITHUB.md",
+        "type": "file",
+        "bytes": 566
+      },
+      {
+        "name": "settings.gradle.kts",
+        "path": "C:\\ai\\AutonomousIncomeAgent_GitHub\\settings.gradle.kts",
+        "type": "file",
+        "bytes": 341
+      }
+    ]
+  },
+  "timestamp": "2026-09-27T20:47:44"
+}

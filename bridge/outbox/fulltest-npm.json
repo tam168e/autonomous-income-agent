@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "id": "fulltest-npm",
+  "bridge_version": "1.0.0",
+  "operation": "run",
+  "error": "FileNotFoundError: executable not found in PATH: npm.cmd",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 318, in process_inbox\n    result[\"result\"] = dispatch(command, cfg)\n                       ~~~~~~~~^^^^^^^^^^^^^^\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 287, in dispatch\n    return op_run(command, cfg)\n  File \"C:\\AI_WindowsBridge\\bridge\\windows_agent.py\", line 232, in op_run\n    raise FileNotFoundError(f\"executable not found in PATH: {exe}\")\nFileNotFoundError: executable not found in PATH: npm.cmd\n",
+  "timestamp": "2026-09-27T20:47:44"
+}

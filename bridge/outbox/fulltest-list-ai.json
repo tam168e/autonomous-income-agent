@@ -1,0 +1,180 @@
+{
+  "ok": true,
+  "id": "fulltest-list-ai",
+  "bridge_version": "1.0.0",
+  "operation": "list_dir",
+  "result": {
+    "path": "C:\\AI_System",
+    "items": [
+      {
+        "name": "__pycache__",
+        "path": "C:\\AI_System\\__pycache__",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "agent_env",
+        "path": "C:\\AI_System\\agent_env",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "data",
+        "path": "C:\\AI_System\\data",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "logs",
+        "path": "C:\\AI_System\\logs",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "modules",
+        "path": "C:\\AI_System\\modules",
+        "type": "dir",
+        "bytes": null
+      },
+      {
+        "name": "agent.py",
+        "path": "C:\\AI_System\\agent.py",
+        "type": "file",
+        "bytes": 2207
+      },
+      {
+        "name": "AI_STUDIO_BRIDGE.env.example",
+        "path": "C:\\AI_System\\AI_STUDIO_BRIDGE.env.example",
+        "type": "file",
+        "bytes": 177
+      },
+      {
+        "name": "ai_studio_bridge.py",
+        "path": "C:\\AI_System\\ai_studio_bridge.py",
+        "type": "file",
+        "bytes": 8030
+      },
+      {
+        "name": "AI_Studio_Bridge.zip",
+        "path": "C:\\AI_System\\AI_Studio_Bridge.zip",
+        "type": "file",
+        "bytes": 5008
+      },
+      {
+        "name": "AI_Studio_Bridge_CHROME.zip",
+        "path": "C:\\AI_System\\AI_Studio_Bridge_CHROME.zip",
+        "type": "file",
+        "bytes": 21280
+      },
+      {
+        "name": "AI_Studio_Bridge_COMPLETE.zip",
+        "path": "C:\\AI_System\\AI_Studio_Bridge_COMPLETE.zip",
+        "type": "file",
+        "bytes": 9844
+      },
+      {
+        "name": "bridge_control_server.py",
+        "path": "C:\\AI_System\\bridge_control_server.py",
+        "type": "file",
+        "bytes": 4986
+      },
+      {
+        "name": "dashboard.py",
+        "path": "C:\\AI_System\\dashboard.py",
+        "type": "file",
+        "bytes": 2923
+      },
+      {
+        "name": "install_ai_studio_bridge.bat",
+        "path": "C:\\AI_System\\install_ai_studio_bridge.bat",
+        "type": "file",
+        "bytes": 331
+      },
+      {
+        "name": "launcher.lock",
+        "path": "C:\\AI_System\\launcher.lock",
+        "type": "file",
+        "bytes": 0
+      },
+      {
+        "name": "launcher.pid",
+        "path": "C:\\AI_System\\launcher.pid",
+        "type": "file",
+        "bytes": 4
+      },
+      {
+        "name": "launcher.py",
+        "path": "C:\\AI_System\\launcher.py",
+        "type": "file",
+        "bytes": 2396
+      },
+      {
+        "name": "launcher_backup.py",
+        "path": "C:\\AI_System\\launcher_backup.py",
+        "type": "file",
+        "bytes": 2075
+      },
+      {
+        "name": "launcher_before_mutex.py",
+        "path": "C:\\AI_System\\launcher_before_mutex.py",
+        "type": "file",
+        "bytes": 2396
+      },
+      {
+        "name": "README.txt",
+        "path": "C:\\AI_System\\README.txt",
+        "type": "file",
+        "bytes": 3065
+      },
+      {
+        "name": "README_CONTROL_PLANE.txt",
+        "path": "C:\\AI_System\\README_CONTROL_PLANE.txt",
+        "type": "file",
+        "bytes": 2455
+      },
+      {
+        "name": "run_control_plane.bat",
+        "path": "C:\\AI_System\\run_control_plane.bat",
+        "type": "file",
+        "bytes": 635
+      },
+      {
+        "name": "send_prompt.ps1",
+        "path": "C:\\AI_System\\send_prompt.ps1",
+        "type": "file",
+        "bytes": 395
+      },
+      {
+        "name": "start_ai_studio_bridge.bat",
+        "path": "C:\\AI_System\\start_ai_studio_bridge.bat",
+        "type": "file",
+        "bytes": 448
+      },
+      {
+        "name": "start_AI_System.bat",
+        "path": "C:\\AI_System\\start_AI_System.bat",
+        "type": "file",
+        "bytes": 75
+      },
+      {
+        "name": "start_hidden.vbs",
+        "path": "C:\\AI_System\\start_hidden.vbs",
+        "type": "file",
+        "bytes": 158
+      },
+      {
+        "name": "start_quick_tunnel.bat",
+        "path": "C:\\AI_System\\start_quick_tunnel.bat",
+        "type": "file",
+        "bytes": 511
+      },
+      {
+        "name": "test_control_plane.ps1",
+        "path": "C:\\AI_System\\test_control_plane.ps1",
+        "type": "file",
+        "bytes": 355
+      }
+    ]
+  },
+  "timestamp": "2026-09-27T20:47:44"
+}

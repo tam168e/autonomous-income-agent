@@ -16,7 +16,7 @@ import java.time.Instant
 class MysteriumNodeProvider(
     private val client: OkHttpClient = OkHttpClient(),
     private val baseUrl: String = BuildConfig.BACKEND_BASE_URL
-) : IncomeProvider {
+) : IncomeProvider, PersistentIncomeProvider {
     override val id: String = "mysterium-node"
     override val name: String = "Mysterium Node"
     override val executionMode: ExecutionMode = ExecutionMode.PERSISTENT
@@ -74,6 +74,21 @@ class MysteriumNodeProvider(
                 "wallet" to wallet
             )
         )
+
+    override suspend fun getPersistentStatus(): Result<PersistentProviderStatus> =
+        runCatching {
+            val status = getRuntimeStatus()
+            PersistentProviderStatus(
+                providerId = id,
+                healthy = status.healthy,
+                summary = when {
+                    !status.healthy -> "Mysterium backend/node is not healthy."
+                    status.countryConfirmationRequired -> "Country confirmation is required."
+                    status.activeServices == 0 -> "No active Mysterium provider service is running."
+                    else -> "Running " + status.activeServices + " service(s); balance " + status.balanceMyst + " MYST."
+                }
+            )
+        }
 
     suspend fun getRuntimeStatus(): RuntimeStatus {
         val request = Request.Builder()

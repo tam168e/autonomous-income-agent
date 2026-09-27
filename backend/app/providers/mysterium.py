@@ -134,7 +134,10 @@ class MysteriumNodeProvider:
         service_list = services if isinstance(services, list) else []
         active_services = [
             service for service in service_list
-            if isinstance(service, dict) and service.get("status") == "Running"
+            if (
+                isinstance(service, dict)
+                and str(service.get("status", "")).strip().lower() == "running"
+            )
         ]
         return {
             "identityId": identity_id,
@@ -423,11 +426,17 @@ async def _gather_snapshot(provider: MysteriumNodeProvider, identity_id: str) ->
             response.raise_for_status()
             return response.json() if response.text else None
 
-        results = await asyncio.gather(
+        async def get_optional(path: str, default: Any) -> Any:
+            try:
+                return await get(path)
+            except Exception:
+                return default
+
+        health, identity, services, activity, quality = await asyncio.gather(
             get("/healthcheck"),
             get("/identities/" + identity_id),
             get("/services?includeAll=true"),
-            get("/node/provider/activity-stats"),
-            get("/node/provider/quality"),
+            get_optional("/node/provider/activity-stats", {"telemetryAvailable": False}),
+            get_optional("/node/provider/quality", {"telemetryAvailable": False}),
         )
-        return results[0], results[1], results[2], results[3], results[4]
+        return health, identity, services, activity, quality

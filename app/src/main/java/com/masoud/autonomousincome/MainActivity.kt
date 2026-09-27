@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
 private fun DashboardScreen(repository: IncomeRepository) {
     var address by remember { mutableStateOf(repository.getActiveWallet()?.address.orEmpty()) }
     var network by remember { mutableStateOf(repository.getActiveWallet()?.network ?: "Polygon") }
-    var asset by remember { mutableStateOf(repository.getActiveWallet()?.asset ?: "USDT") }
+    var asset by remember { mutableStateOf(repository.getActiveWallet()?.asset ?: "MYST") }
     var message by remember { mutableStateOf("Ready. Mysterium persistent adapter is configured; live earnings depend on the local node and backend state.") }
     var earnings by remember { mutableStateOf(repository.totalVerifiedEarningsUsd()) }
 
